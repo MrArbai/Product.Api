@@ -39,7 +39,7 @@ namespace Product.Api.Controllers
             }
         }
         [HttpPost("Cheklist"), Authorize]
-        public async Task<IActionResult> Save(string Name)
+        public async Task<IActionResult> Save(CheklistDto Name)
         {
             try
             {

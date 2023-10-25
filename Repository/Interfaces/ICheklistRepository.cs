@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Product.Api.Dto;
 using Product.Api.Models;
 
 namespace Product.Api.Repository.Interfaces
@@ -7,7 +8,7 @@ namespace Product.Api.Repository.Interfaces
     {
 
         Task<IEnumerable<Cheklist>> GetAll();
-        Task<Cheklist> Save(string Name);
+        Task<Cheklist> Save(CheklistDto Name);
         Task Delete(int id);
     }
 }

@@ -1,5 +1,6 @@
 using Product.Api.Repository.Interfaces;
 using Product.Api.Repository.Interfaces.Auth;
+using Product.Api.Repository.Interfaces;
 
 namespace Product.Api.Repository.Implements.Auth
 {
@@ -8,6 +9,7 @@ namespace Product.Api.Repository.Implements.Auth
         private IDapperContext _context;
         private IAuthRepository _authRepository;
         private ICheklistRepository _cheklistRepository;
+        private IItemRepsitory _itemRepository;
 
         public UnitOfWork(IDapperContext context)
         {
@@ -23,6 +25,11 @@ namespace Product.Api.Repository.Implements.Auth
         {
             get { return _cheklistRepository ??= new CheklistRepository(_context); }
         }
+        public IItemRepsitory ItemRepository
+        {
+            get { return _itemRepository ??= new ItemRepsitory(_context); }
+        }
+
 
     }
 }

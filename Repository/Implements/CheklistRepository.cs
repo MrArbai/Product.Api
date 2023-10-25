@@ -1,5 +1,6 @@
 using Dapper;
 using Dapper.Contrib.Extensions;
+using Product.Api.Dto;
 using Product.Api.Models;
 using Product.Api.Repository.Interfaces;
 
@@ -43,13 +44,13 @@ namespace Product.Api.Repository.Implements
             }
         }
 
-        public async Task<Cheklist> Save(string name)
+        public async Task<Cheklist> Save(CheklistDto name)
         {
             try
             {
                 Cheklist obj = new()
                 {
-                    Name = name
+                    Name = name.Name
                 };
                 await Task.Run(() => _context.Db.InsertAsync(obj));
                 return obj;
