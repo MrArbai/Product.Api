@@ -6,8 +6,7 @@ namespace Product.Api.Models
     [Table("TblUser")]
     public class User : BaseModel
     {
-        [Key]
-        public int UserId { get; set; }
+        //public int UserId { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
 

@@ -18,7 +18,7 @@ namespace Product.Api.Controllers.Auth
 
     {
         
-        private readonly IConfiguration _config;
+        private readonly IConfiguration? _config;
         private IDapperContext? _context;
         private IUnitOfWork? _uow;
         [HttpPost("Register")]
@@ -95,12 +95,11 @@ namespace Product.Api.Controllers.Auth
         {
             List<Claim> claims = new()
             {
-                new Claim(ClaimTypes.PrimarySid, user.UserId.ToString()),
+                new Claim(ClaimTypes.PrimarySid, user.Email),
                 new Claim(ClaimTypes.Name, user.Username)
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
-                _config.GetSection("AppSettings:Token").Value!));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("1niT0k3nr4H4s14p55@2oi9#0k3..asa!223Ac.,asd~12!@@$$#%#^^$^&%**)((W)"));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 

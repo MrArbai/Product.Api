@@ -20,7 +20,7 @@ namespace Product.Api.Repository.Implements.Auth
         {
             try
             {
-                var sql = string.Format(@"UPDATE MYPSG..tblMstItemGroupMaterial SET TeleSend = 1 WHERE GroupItemCode IN ({0})", UserName);
+                var sql = string.Format(@"SELECT * FROM MyDB..TblUser WHERE Username = '{0}'", UserName);
                 var user = await Task.Run(() => _context.Db.QueryFirstAsync<User>(sql)) ?? throw new Exception("User Tidak terdaftar !!!");
                 if (!BCrypt.Net.BCrypt.Verify(Password, user.Password))
                     throw new Exception("Password Salah, Silahkan Periksa Password Anda !!!");  
@@ -41,11 +41,10 @@ namespace Product.Api.Repository.Implements.Auth
             return user;
         }
        
-        public async Task<User> Save(User obj)
+        public async Task<User?> Save(User obj)
         {
             await _context.Db.InsertAsync(obj);
-            var user = await Task.Run(() => _context.Db.Get<User>(obj.Username));
-            return user;
+            return null;
         }
 
 

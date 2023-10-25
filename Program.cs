@@ -30,8 +30,7 @@ builder.Services.AddAuthentication().AddJwtBearer(options =>
         ValidateIssuerSigningKey = true,
         ValidateAudience = false,
         ValidateIssuer = false,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
-                builder.Configuration.GetSection("AppSettings:Token").Value!))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("1niT0k3nr4H4s14p55@2oi9#0k3..asa!223Ac.,asd~12!@@$$#%#^^$^&%**)((W)"))
     };
 });
 
