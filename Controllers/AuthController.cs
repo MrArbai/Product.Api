@@ -1,23 +1,24 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Product.Api.Dto;
 using Product.Api.Models;
 using Product.Api.Repository.Implements;
+using Product.Api.Repository.Implements.Auth;
 using Product.Api.Repository.Interfaces;
+using Product.Api.Repository.Interfaces.Auth;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Product.Api.Controllers.Auth
+namespace Product.Api.Controllers
 {
     [Route("ProductApi/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
 
     {
-        
+
         private readonly IConfiguration? _config;
         private IDapperContext? _context;
         private IUnitOfWork? _uow;
@@ -39,7 +40,7 @@ namespace Product.Api.Controllers.Auth
                 }
 
                 var usercreate = new User();
-                
+
                 using (_context = new DapperContext())
                 {
                     _uow = new UnitOfWork(_context);
@@ -48,7 +49,7 @@ namespace Product.Api.Controllers.Auth
                         Username = userDto.Username,
                         Email = userDto.Email,
                         Password = userDto.Password
-                        
+
                     };
                     usercreate = await _uow.AuthRepository.Register(user);
                 }
@@ -75,7 +76,7 @@ namespace Product.Api.Controllers.Auth
                     _uow = new UnitOfWork(_context);
                     dt = await _uow.AuthRepository.Login(userDto.UserName, userDto.Password);
 
-                    dt.Token = GenerateJwtToken(dt);                    
+                    dt.Token = GenerateJwtToken(dt);
 
                     if (dt == null)
                         return Unauthorized();
