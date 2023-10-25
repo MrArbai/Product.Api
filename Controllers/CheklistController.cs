@@ -59,7 +59,7 @@ namespace Product.Api.Controllers
                 return Ok(new { Status = st });
             }
         }
-        [HttpPost("Cheklist/{Id}"), Authorize]
+        [HttpDelete("Cheklist/{Id}"), Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             try
