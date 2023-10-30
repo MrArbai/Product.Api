@@ -20,7 +20,7 @@ namespace Product.Api.Repository.Implements.Auth
         {
             try
             {
-                var sql = string.Format(@"SELECT * FROM MyDB..TblUser WHERE Username = '{0}'", UserName);
+                var sql = string.Format(@"SELECT * FROM Product..TblUser WHERE Username = '{0}'", UserName);
                 var user = await Task.Run(() => _context.Db.QueryFirstAsync<User>(sql)) ?? throw new Exception("User Tidak terdaftar !!!");
                 if (!BCrypt.Net.BCrypt.Verify(Password, user.Password))
                     throw new Exception("Password Salah, Silahkan Periksa Password Anda !!!");  

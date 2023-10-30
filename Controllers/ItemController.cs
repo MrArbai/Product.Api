@@ -117,7 +117,7 @@ namespace Product.Api.Controllers
                 return Ok(new { Status = st });
             }
         }
-        [HttpPut("Item/{ItemId}/CheklistId/{Id}"), Authorize]
+        [HttpPut("CheklistId/{Id}/Item/rename/{ItemId}"), Authorize]
         public async Task<IActionResult> Update(int Id, int ItemId, CheklistDto Name)
         {
             try

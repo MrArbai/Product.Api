@@ -52,7 +52,7 @@ namespace Product.Api.Repository.Implements
                 {
                     Name = name.Name
                 };
-                await Task.Run(() => _context.Db.InsertAsync(obj));
+                await Task.Run(() => _context.Db.Insert(obj));
                 return obj;
             }
             catch (Exception ex)

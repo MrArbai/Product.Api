@@ -27,7 +27,7 @@ namespace Product.Api.Repository.Implements
         {
             try
             {
-                var sql = string.Format(@"SELECT * FROM MyDB..TblItem WHERE CheklistId = '{0}'", Id);
+                var sql = string.Format(@"SELECT * FROM Product..TblItem WHERE CheklistId = '{0}'", Id);
                 IEnumerable<Item> user = await Task.Run(() => _context.Db.QueryAsync<Item>(sql)) ?? throw new Exception("Item Tidak Di Temukan !!!");
                 return user;
             }
@@ -74,7 +74,7 @@ namespace Product.Api.Repository.Implements
             try
             {
                 Item item;
-                var sql = string.Format(@"UPDATE MyDB..TblItem SET Isactive = 1 WHERE Id = {0} AND CheklistID = {1}", ItemId, Id);
+                var sql = string.Format(@"UPDATE Product..TblItem SET Isactive = 1 WHERE Id = {0} AND CheklistID = {1}", ItemId, Id);
                 item = (Item)await _context.Db.QueryAsync<Item>(sql);
 
                 return item;
@@ -90,7 +90,7 @@ namespace Product.Api.Repository.Implements
             try
             {
                 Item item;
-                var sql = string.Format(@"DELETE MyDb..TblItem  WHERE Id = {0} AND CheklistID = {1}", ItemId, Id);
+                var sql = string.Format(@"DELETE Product..TblItem  WHERE Id = {0} AND CheklistID = {1}", ItemId, Id);
                 await _context.Db.QueryAsync<Item>(sql);
             }
             catch (Exception ex)
@@ -103,7 +103,7 @@ namespace Product.Api.Repository.Implements
             try
             {
                 Item item;
-                var sql = string.Format(@"UPDATE MyDB..TblItem SET Name = {0} WHERE Id = {1} AND CheklistID = {2}", ItemId, Id,Name);
+                var sql = string.Format(@"UPDATE Product..TblItem SET Name = {0} WHERE Id = {1} AND CheklistID = {2}", ItemId, Id,Name);
                 item = (Item)await _context.Db.QueryAsync<Item>(sql);
 
                 return item;

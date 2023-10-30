@@ -7,7 +7,7 @@ namespace Product.Api.Models
     public class Cheklist : BaseModel
     {
         [ExplicitKey]
-        public int Id { get; set; }
+        //public int Id { get; set; }?
         public string Name { get; set; }
 
     }

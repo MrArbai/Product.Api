@@ -13,7 +13,7 @@ namespace Product.Api.Repository.Implements
         
         public DapperContext()
         {
-            _connectionString = "Data Source= 127.0.0.1; Initial Catalog=MyDB; User ID=Mifta; Password=9797; MultipleActiveResultSets=True;";
+            _connectionString = "Data Source= 127.0.0.1; Initial Catalog=Product; User ID=Mifta; Password=9797; MultipleActiveResultSets=True;";
 
             _db ??= GetOpenConnection( _connectionString);
         }
